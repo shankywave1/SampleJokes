@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "4D66A4CE-CA45-4175-BF90-2D67CC4A3C5E",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:SampleJokes.xcodeproj",
+        "identifier" : "5CABC64C2A9E3F200046B19A",
+        "name" : "SampleJokesTests"
+      }
+    }
+  ],
+  "version" : 1
+}
