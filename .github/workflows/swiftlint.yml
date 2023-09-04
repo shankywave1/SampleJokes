@@ -29,5 +29,5 @@ jobs:
         with:
           project: SampleJokes.xcodeproj
           scheme: SampleJokes
-          destination: 'platform=iOS Simulator,name=Any iOS Simulator Device'
+          destination: 'platform=iOS Simulator,name=iPhone 14,OS=17.0'
           action: test
