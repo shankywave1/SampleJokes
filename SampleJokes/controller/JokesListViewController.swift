@@ -16,12 +16,13 @@ class JokesListViewController: UITableViewController {
         title = "Unlimint Jokes"
         setupNavigationBar()
         setupTableView()
-        viewModel = JokesViewModel(maxJokes: Constants.maxJokes, jokeFileName: Constants.jokesFileName)
-        viewModel.delegate = self
+        viewModel = JokesViewModel(maxJokes: Constants.maxJokes,
+                                   jokeFileName: Constants.jokesFileName,
+                                   apiManager: JokeAPICall(timeInterval: Constants.jokeFetchTimeIntervalSec))
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        viewModel.fetchJokes()
+        setupJokesStream()
     }
 
     private func setupNavigationBar() {
@@ -82,19 +83,16 @@ extension JokesListViewController {
 }
 
 // MARK: - JokesViewModelDelegate
-extension JokesListViewController: JokesViewModelDelegate {
-    func didUpdate(with joke: String) {
-        DispatchQueue.main.async { [weak self] in
-            self?.updateTableView(with: joke)
-        }
-    }
-}
-
-
-// MARK: - Cell Related Logic
 extension JokesListViewController {
-    func shouldAnimate(_ cell: UITableViewCell, at indexPath: IndexPath) -> (Bool, JokeTableViewCell?) {
-        guard let customCell = cell as? JokeTableViewCell, indexPath.row == 0  else { return (false, nil) }
-        return (true, customCell)
+    func setupJokesStream() {
+        Task(priority: .background) { [weak self] in
+            guard let self = self else {return}
+            let jokeStream = viewModel.fetchAsyncStreamJokes()
+            for try await joke in jokeStream {
+                await MainActor.run {
+                    self.updateTableView(with: joke)
+                }
+            }
+        }
     }
 }

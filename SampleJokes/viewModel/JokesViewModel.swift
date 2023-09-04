@@ -7,23 +7,18 @@
 
 import Foundation
 
-protocol JokesViewModelDelegate: AnyObject {
-    func didUpdate(with joke: String)
-}
-
-
 class JokesViewModel {
 
     let maxJokes: Int
-    weak var delegate: JokesViewModelDelegate?
     private let jokeQueue: JokeQueue
     private let diskDataManager: DiskDataManager
-    private let apiManager = JokeAPICall()
+    private let apiManager: JokeAPICaller
     
-    init(maxJokes: Int, jokeFileName: String) {
+    init(maxJokes: Int, jokeFileName: String, apiManager: JokeAPICaller) {
         self.maxJokes = maxJokes
         self.jokeQueue = JokeQueue(maxSize: maxJokes)
         self.diskDataManager = DiskDataManager(fileName: jokeFileName)
+        self.apiManager = apiManager
         loadJokes()
     }
     
@@ -49,16 +44,8 @@ class JokesViewModel {
 
 // MARK: - API CAll
 extension JokesViewModel {
-    func fetchJokes() {
-        let workItem = DispatchWorkItem {
-            self.fetchJokes()
-        }
-        apiManager.getJoke { aJoke in
-            if let joke = aJoke {
-                self.delegate?.didUpdate(with: joke)
-            }
-            DispatchQueue.global().asyncAfter(deadline: (.now() + .milliseconds(1000*10)), execute: workItem)
-        }
+    func fetchAsyncStreamJokes() -> JokesAsyncSequence {
+        JokesAsyncSequence(apiCaller: apiManager)
     }
 }
 

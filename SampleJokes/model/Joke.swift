@@ -7,6 +7,9 @@
 
 import Foundation
 
+/// Easily throw generic errors with a text description.
+extension String: Error { }
+
 struct Joke: Codable {
     // String representing a Geeky Joke
     let joke: String
@@ -32,7 +35,7 @@ struct Constants {
     static let maxJokes = 10
     
     /// Time interval between fetching of two Jokes in seconds. As per business definition it is one second.
-    static let jokeFetchTimeIntervalSec = 1
+    static let jokeFetchTimeIntervalSec: UInt64 = 1_000_000_000_0
     
     /// File name which is used to store the jokes
     static let jokesFileName = "Jokes"
