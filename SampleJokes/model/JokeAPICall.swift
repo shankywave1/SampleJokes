@@ -14,7 +14,7 @@ protocol JokeAPICaller {
 
 struct JokeAPICall: JokeAPICaller {
     let timeInterval: UInt64
-    
+
     func getJokes() async throws -> String {
         guard let url = URL(string: "https://geek-jokes.sameerkumar.website/api") else {
             throw "The URL could not be created."
