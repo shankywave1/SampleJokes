@@ -7,11 +7,14 @@
 
 import Foundation
 
+/// Easily throw generic errors with a text description.
+extension String: Error { }
+
 struct Joke: Codable {
     // String representing a Geeky Joke
     let joke: String
     let date: Date
-    
+
     init(joke: String) {
         self.joke = joke
         self.date = Date()
@@ -26,14 +29,13 @@ extension Joke {
     }
 }
 
-
 struct Constants {
     /// Maximun number of jokes allowed to store / save in UI
     static let maxJokes = 10
-    
+
     /// Time interval between fetching of two Jokes in seconds. As per business definition it is one second.
-    static let jokeFetchTimeIntervalSec = 1
-    
+    static let jokeFetchTimeIntervalSec: UInt64 = 1_000_000_000_0
+
     /// File name which is used to store the jokes
     static let jokesFileName = "Jokes"
 }

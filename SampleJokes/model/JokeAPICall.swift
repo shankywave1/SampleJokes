@@ -7,28 +7,24 @@
 
 import Foundation
 
-struct JokeAPICall {
-    func getJoke(_ completion: @escaping (String?) -> Void) {
-        let url = URL(string: "https://geek-jokes.sameerkumar.website/api")!
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
-                print("Error: \(error)")
-                completion(nil)
-                return
-            }
-            
-            guard let data = data else {
-                completion(nil)
-                return
-            }
-            
-            if let responseString = String(data: data, encoding: .utf8) {
-                completion(responseString)
-            } else {
-                print("Unable to convert data to string")
-                completion(nil)
-            }
+protocol JokeAPICaller {
+    var timeInterval: UInt64 {get}
+    func getJokes() async throws -> String
+}
+
+struct JokeAPICall: JokeAPICaller {
+    let timeInterval: UInt64
+
+    func getJokes() async throws -> String {
+        guard let url = URL(string: "https://geek-jokes.sameerkumar.website/api") else {
+            throw "The URL could not be created."
         }
-        task.resume()
+        let (data, response) = try await URLSession.shared.data(from: url)
+        guard (response as? HTTPURLResponse)?.statusCode == 200 else {
+            throw "The server responded with an error."
+        }
+        let result = try JSONDecoder().decode(String.self, from: data)
+        try await Task.sleep(nanoseconds: timeInterval)
+        return result
     }
 }
