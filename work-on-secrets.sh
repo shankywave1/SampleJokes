@@ -1,4 +1,4 @@
 ##!/bin/sh
 
-echo "My project scheme name is $PROJECT_SCHEME_NAME"
+echo "My project scheme name is $1"
 

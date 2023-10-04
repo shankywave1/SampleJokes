@@ -32,5 +32,7 @@ jobs:
           destination: 'platform=iOS Simulator,name=iPhone 14,OS=17.0'
           action: test
       - name: Check Secret Variables
-        run: ./work-on-secrets.sh
+        run: ./work-on-secrets.sh $PROJECT_SCHEME_NAME
+        env:
+          PROJECT_SCHEME_NAME: ${{ secrets.PROJECT_SCHEME_NAME }}
     
