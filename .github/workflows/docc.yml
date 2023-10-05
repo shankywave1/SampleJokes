@@ -1,4 +1,4 @@
-name: BuildAndTest
+name: DoccAndGitHubPages
 
 on:
   push:
@@ -13,7 +13,7 @@ permissions:
 jobs:
 
  build:
-    name: Build and Test default scheme using iPhone simulator
+    name: Build docc and upload to GitHub pages
     runs-on: macos-13
 
     steps:
