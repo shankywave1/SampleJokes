@@ -27,3 +27,7 @@ Please head to the pr section and see the work in details.
 4. A new jokes replace old ones
 5. Relaunching the app all loaded jokes should be displayed
 6. TableViewCell done using code only in autolayout
+
+## Icing on the cake
+1. docc documentation
+2. GitHub secrets demo
