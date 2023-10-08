@@ -32,7 +32,5 @@ jobs:
     steps:
     - name: Send greeting
       run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
-    - name: Check Secrets
-      run: ./work-on-secrets.sh $TESTFLIGHT_KEY
-      env:
-          TESTFLIGHT_KEY: ${{ vars.TESTFLIGHT_KEY }}
+    - name: Check Environment Variable
+      run: echo "My key is $TESTFLIGHT_KEY"
