@@ -1,0 +1,31 @@
+name: DisptachInputCheck
+
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        type: choice
+        description: Build Environment
+        default: 'QA'
+        options: 
+        - DEV
+        - QA
+        - PROD
+      message:
+        type: string
+        required: true
+      use-emoji:
+        type: boolean
+        description: Include 🎉🤣 emojis
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Send greeting
+      run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
+    
