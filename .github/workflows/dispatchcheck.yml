@@ -37,11 +37,11 @@ jobs:
     - name: Send greeting
       run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
     - name: Check Environment Variable
-      run: echo "My key is $TESTFLIGHT_KEY"
-      env:
-          TESTFLIGHT_KEY: ${{ env.TESTFLIGHT_KEY }}
+      run: echo "My key is ${{ env.TESTFLIGHT_KEY }}"
     - name: Print environment name
-      run: echo "${{ github.env }}"
+      run: |
+        printenv
+        echo "::debug::This is a debug message"  
     - name: Check Repo Environment Variable
       run: echo "My repo key is $HOCKEY_KEY"
       env:
