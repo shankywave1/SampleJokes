@@ -33,6 +33,6 @@ jobs:
     - name: Send greeting
       run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
     - name: Check Secrets
-      run: echo "$TESTFLIGHT_KEY"
+      run: ./work-on-secrets.sh $TESTFLIGHT_KEY
       env:
           TESTFLIGHT_KEY: ${{ vars.TESTFLIGHT_KEY }}
