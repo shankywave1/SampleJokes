@@ -5,7 +5,7 @@ on:
     inputs:
       name:
         type: choice
-        description: Build Environment
+        description: 'AWS SDK Check'
         default: 'QA'
         options: 
         - DEV
@@ -16,9 +16,10 @@ on:
         required: true
       use-emoji:
         type: boolean
-        description: Include 🎉🤣 emojis
+        default: true
+        description: Upload to TestFlight
       environment:
-        description: 'Environment to run tests against'
+        description: 'Environment to build'
         type: environment
 
 jobs:
@@ -28,4 +29,7 @@ jobs:
     steps:
     - name: Send greeting
       run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
-    
+    - name: Check Secrets
+      run: echo "$TESTFLIGHT_KEY"
+      env:
+          TESTFLIGHT_KEY: ${{ variables.TESTFLIGHT_KEY }}
