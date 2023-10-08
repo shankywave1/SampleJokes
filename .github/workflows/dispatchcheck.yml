@@ -32,4 +32,4 @@ jobs:
     - name: Check Secrets
       run: echo "$TESTFLIGHT_KEY"
       env:
-          TESTFLIGHT_KEY: ${{ variables.TESTFLIGHT_KEY }}
+          TESTFLIGHT_KEY: ${{ vars.TESTFLIGHT_KEY }}
