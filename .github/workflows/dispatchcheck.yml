@@ -40,3 +40,5 @@ jobs:
       run: echo "My key is $TESTFLIGHT_KEY"
     - name: Print environment name
       run: echo "${{ github.env }}"
+    - name: Check Repo Environment Variable
+      run: echo "My repo key is $HOCKEY_KEY"
