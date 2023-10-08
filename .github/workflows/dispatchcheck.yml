@@ -21,6 +21,10 @@ on:
       environment:
         description: 'Environment to build'
         type: environment
+      debug:
+        type: boolean
+        default: true
+        description: Enable debug mode
 env:
   # Setting an environment variable with the value of a configuration variable
   env_var: ${{ vars.ENV_CONTEXT_VAR }}
@@ -34,3 +38,5 @@ jobs:
       run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
     - name: Check Environment Variable
       run: echo "My key is $TESTFLIGHT_KEY"
+    - name: Print environment name
+      run: echo "${{ github.env }}"
