@@ -21,6 +21,9 @@ on:
       environment:
         description: 'Environment to build'
         type: environment
+env:
+  # Setting an environment variable with the value of a configuration variable
+  env_var: ${{ vars.ENV_CONTEXT_VAR }}
 
 jobs:
   greet:
