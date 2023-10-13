@@ -16,13 +16,13 @@ jobs:
         with: 
           xcode-version: '14.2'
       - name: Build and export IPA
-      uses: yukiarrr/ios-build-action@v1.11.0
-      with:
-        project-path: SampleJokes.xcodeproj
-        scheme: 'SampleJokes'
-        export_method: 'development'
-        p12_base64: ${{ secrets.APPLE_DEVELOPMENT_CERTIFICATE }}
-        mobileprovision-base64: ${{ secrets.APPLE_DEVELOPMENT_PROVISIONING_PROFILE }}
-        certificate_password: ${{ secrets.UNLOCK_CERTIFICATE }}
-        code-signing-identity: ${{ secrets.CODE_SIGN_IDENTITY }}
+        uses: yukiarrr/ios-build-action@v1.11.0
+        with:
+          project-path: SampleJokes.xcodeproj
+          scheme: 'SampleJokes'
+          export_method: 'development'
+          p12_base64: ${{ secrets.APPLE_DEVELOPMENT_CERTIFICATE }}
+          mobileprovision-base64: ${{ secrets.APPLE_DEVELOPMENT_PROVISIONING_PROFILE }}
+          certificate_password: ${{ secrets.UNLOCK_CERTIFICATE }}
+          code-signing-identity: ${{ secrets.CODE_SIGN_IDENTITY }}
     
