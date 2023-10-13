@@ -16,7 +16,7 @@ jobs:
         with: 
           xcode-version: '14.2'
       - name: Build and export IPA
-        uses: sparkfabrik/ios-build-action@v1.0.0
+        uses: kumarsunil0007/build-ios-action@latest
         with:
           project-path: SampleJokes.xcodeproj
           scheme: 'SampleJokes'
