@@ -20,9 +20,9 @@ jobs:
         with:
           project-path: SampleJokes.xcodeproj
           scheme: 'SampleJokes'
-          export_method: 'development'
-          p12_base64: ${{ secrets.APPLE_DEVELOPMENT_CERTIFICATE }}
+          export-method: 'development'
+          p12-base64: ${{ secrets.APPLE_DEVELOPMENT_CERTIFICATE }}
           mobileprovision-base64: ${{ secrets.APPLE_DEVELOPMENT_PROVISIONING_PROFILE }}
-          certificate_password: ${{ secrets.UNLOCK_CERTIFICATE }}
+          certificate-password: ${{ secrets.UNLOCK_CERTIFICATE }}
           code-signing-identity: ${{ secrets.CODE_SIGN_IDENTITY }}
     
