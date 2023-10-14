@@ -1,4 +1,4 @@
-name: BuildAndTest
+name: ManualIPAGeneration
 
 on:
   workflow_dispatch:
@@ -29,4 +29,3 @@ jobs:
         run: xcodebuild -exportArchive -archivePath DerivedData/Archive/SampleJokes.xcarchive -exportOptionsPlist ExportOptions.plist -exportPath DerivedData/ipa
       - name: Dump file hierarchy
         run: ls -R
-    

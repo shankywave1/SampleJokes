@@ -11,4 +11,3 @@ xcrun docc process-archive transform-for-static-hosting \
     --hosting-base-path "SampleJokes" # add your repo name later
 
 echo '<script>window.location.href += "/documentation/samplejokes"</script>' > .docs/index.html
-
