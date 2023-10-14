@@ -19,12 +19,12 @@ jobs:
         uses: yukiarrr/ios-build-action@v1.11.0
         with:
           project-path: SampleJokes.xcodeproj
-          scheme: 'SampleJokes'
-          export-method: 'development'
+          scheme: "SampleJokes"
+          export-method: "development"
           p12-base64: ${{ secrets.APPLE_DEVELOPMENT_CERTIFICATE }}
           mobileprovision-base64: ${{ secrets.APPLE_DEVELOPMENT_PROVISIONING_PROFILE }}
           certificate-password: ${{ secrets.UNLOCK_CERTIFICATE }}
-          code-signing-identity: ${{ secrets.CODE_SIGN_IDENTITY }}
-          export-options: 'ExportOptions.plist'
-          team-id: '5KSQYC3V4Y'
+          code-signing-identity: "Apple Development: Pran Kishore (XF6ZUP2XAH)"
+          export-options: "ExportOptions.plist"
+          team-id: "5KSQYC3V4Y"
     
