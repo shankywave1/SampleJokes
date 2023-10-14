@@ -31,3 +31,11 @@ Please head to the pr section and see the work in details.
 ## Icing on the cake
 1. docc documentation
 2. GitHub secrets demo
+
+
+We create the gpg files by running commands like...
+
+gpg --symmetric --cipher-algo AES256 RBiOSWildCardDev.mobileprovision
+gpg --symmetric --cipher-algo AES256 AppleDevelopmentRBiOSWildCard.p12
+
+The password on the P12 file is the same as the password used to perform the encryption. The password is also stored on Github as a secret in the env var PROVISIONING_PASSWORD.
