@@ -25,5 +25,6 @@ jobs:
           mobileprovision-base64: ${{ secrets.APPLE_DEVELOPMENT_PROVISIONING_PROFILE }}
           certificate-password: ${{ secrets.UNLOCK_CERTIFICATE }}
           code-signing-identity: ${{ secrets.CODE_SIGN_IDENTITY }}
-          export-options: "ExportOptions.plist"
+          export-options: 'ExportOptions.plist'
+          team-id: '5KSQYC3V4Y'
     
