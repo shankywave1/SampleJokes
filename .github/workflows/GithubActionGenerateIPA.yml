@@ -1,4 +1,4 @@
-name: BuildAndTest
+name: GenerateIPAWithGitHubActions
 
 on:
   workflow_dispatch:
