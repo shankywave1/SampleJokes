@@ -39,3 +39,11 @@ gpg --symmetric --cipher-algo AES256 RBiOSWildCardDev.mobileprovision
 gpg --symmetric --cipher-algo AES256 AppleDevelopmentRBiOSWildCard.p12
 
 The password on the P12 file is the same as the password used to perform the encryption. The password is also stored on Github as a secret in the env var PROVISIONING_PASSWORD.
+
+
+# Encode
+#openssl base64 -in AppleDevelopmentRBiOSWildCard.p12 -A | tr -d '\n' > AppleDevelopmentRBiOSWildCard_base64.txt
+#openssl base64 -in RBiOSWildCardDev.mobileprovision -A | tr -d '\n' > RBiOSWildCardDev_base64.txt
+
+# Decode
+#openssl base64 -A -d -in certificate_base64.txt -out certificate.p12

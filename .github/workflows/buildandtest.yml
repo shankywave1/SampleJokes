@@ -16,7 +16,7 @@ jobs:
         with: 
           xcode-version: '14.2'
       - name: Build and export IPA
-        uses: kumarsunil0007/build-ios-action@latest
+        uses: yukiarrr/ios-build-action@v1.11.0
         with:
           project-path: SampleJokes.xcodeproj
           scheme: 'SampleJokes'
@@ -25,4 +25,5 @@ jobs:
           mobileprovision-base64: ${{ secrets.APPLE_DEVELOPMENT_PROVISIONING_PROFILE }}
           certificate-password: ${{ secrets.UNLOCK_CERTIFICATE }}
           code-signing-identity: ${{ secrets.CODE_SIGN_IDENTITY }}
+          export-options: "ExportOptions.plist"
     
