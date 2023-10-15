@@ -37,7 +37,7 @@ jobs:
     - name: Send greeting
       run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
     - name: Check Environment Variable
-      run: echo "Shashank key is $TESTFLIGHT_KEY"
+      run: echo "Shashank key is $env_var"
     - name: Print environment name
       run: |
         printenv
