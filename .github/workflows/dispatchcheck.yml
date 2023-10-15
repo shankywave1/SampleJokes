@@ -33,7 +33,7 @@ jobs:
   greet:
     runs-on: ubuntu-latest
     env: 
-      "TESTFLIGHT_KEY": ${{ env.TESTFLIGHT_KEY }}
+      "TESTFLIGHT_KEY": ${{ vars.TESTFLIGHT_KEY }}
     steps:
     - name: Send greeting
       run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
