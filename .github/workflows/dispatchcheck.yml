@@ -27,7 +27,7 @@ on:
         description: Enable debug mode
 env:
   # Setting an environment variable with the value of a configuration variable
-  env_var: ${{ env.testflight_key }}
+  env_var: ${{ env.TESTFLIGHT_KEY }}
 
 jobs:
   greet:
@@ -37,7 +37,7 @@ jobs:
     - name: Send greeting
       run: echo "${{ github.event.inputs.message }} ${{ fromJSON('["", "🥳"]')[github.event.inputs.use-emoji == 'true'] }} ${{ github.event.inputs.name }}"
     - name: Check Environment Variable
-      run: echo "Shashank key is $env_var"
+      run: echo 'Shashank key is $env_var'
     - name: Print environment name
       run: |
         printenv
